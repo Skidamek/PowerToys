@@ -109,7 +109,7 @@ void PowerToys::RenderSettings() {
 
 		ImGui::NewLine();
 								
-		ImGui::TextUnformatted("You can bind a button to the \"FAQ\" command (Freeplay_And_Queue).\nFor example, when you are in the main menu, you can binded button, \nand it will take you to freeplay and turn on the queue for the last played game.");
+		ImGui::TextUnformatted("You can bind a button to the \"FAQ\" command (Freeplay_And_Queue).\nFor example, when you are in the main menu, you can click binded button, \nand it will take you to freeplay and turn on the queue for the last played game.");
 
 		ImGui::NewLine();
 
