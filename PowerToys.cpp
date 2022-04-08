@@ -15,7 +15,6 @@ void PowerToys::onLoad()
 	freeplayAndQueue = true;
 	winnerset = false; //winner set false
 	this->LoadHooks();
-	this->log("Hello!");
 
 	cvarManager->registerCvar("plugin_enabled", "0", "Enable Cool Plugin!", true, true, 0, true, 1)
 		.addOnValueChanged([this](std::string oldValue, CVarWrapper cvar) {
@@ -37,8 +36,8 @@ void PowerToys::onLoad()
 		queueEnabled = cvar.getBoolValue();
 	});
 
-	cvarManager->registerNotifier("freeplay_and_queue", [this](std::vector<std::string> args) {
-		freeplay_and_queue();
+	cvarManager->registerNotifier("FAQ", [this](std::vector<std::string> args) {
+		FAQ();
 	}, "", PERMISSION_ALL);
 };
 
@@ -70,12 +69,11 @@ void PowerToys::StartGame(std::string name)
 			teamNumber = me.GetTeamNum2();
 			freeplayAndQueue = false;
 			if (teamNumber == 0)
-				this->log("Gracz jest w druzynie niebieskiej!");
-			else this->log("Gracz jest w druzynie pomaranczowej!");
+				this->log("Player is in blue team!");
+			else this->log("Player is in orange team!");
 		}
 		else {
 			teamNumber = -1;
-			this->log("Numer druzyny jeszcze nie znaleziony!");
 		}
 	}
 };
@@ -105,15 +103,13 @@ void PowerToys::EndGame(std::string name)
 					ArrayWrapper<PriWrapper> players1 = teams.Get(1).GetMembers();
 					int score0 = teams.Get(0).GetScore();
 					int score1 = teams.Get(1).GetScore();
-					// sprawdzanie czy wygrales
+					// win check
 					if ((score0 > score1 && teamNumber == 0) || (score1 > score0 && teamNumber == 1)) {
 						// log win
-						this->log("Wygrales!");
 						winnerset = false; //winner set false
 						if (winfreeplayEnabled == true) {
 							if (playlistID != 22 && playlistID != 34) {
 								cvarManager->executeCommand("load_freeplay");
-								this->log("Masz wlaczone allways load freeplay after WIN!");
 							}
 						}
 						if (queueEnabled == true) {
@@ -122,11 +118,9 @@ void PowerToys::EndGame(std::string name)
 					}
 					else {
 						// log loss
-						this->log("Przegrales!");
 						winnerset = false; //winner set false
 						if (losefreeplayEnabled == true) {
 							cvarManager->executeCommand("load_freeplay");
-							this->log("Masz wlaczone allways load freeplay after LOSE!");
 						}
 						if (queueEnabled == true) {
 							if (playlistID != 22 && playlistID != 34) {
@@ -146,7 +140,7 @@ void PowerToys::EndGame(std::string name)
 		}
 	}
 	else {
-		this->log("Plugin jest wylaczony!");
+		this->log("Plugin is disabled!");
 	}
 };
 
@@ -158,7 +152,7 @@ void PowerToys::Reset(std::string name)
 	winnerset = false; //winner set false
 };
 
-void PowerToys::freeplay_and_queue()
+void PowerToys::FAQ()
 {
 	if (pluginEnabled == true) {
 		if (freeplayAndQueue == true && !gameWrapper->IsInFreeplay()) {
@@ -190,6 +184,4 @@ void PowerToys::onUnload()
 	gameWrapper->UnhookEvent("Function GameEvent_TA.Countdown.BeginState");
 	gameWrapper->UnhookEvent("Function TAGame.GameEvent_Soccar_TA.OnMatchWinnerSet");
 	gameWrapper->UnhookEvent("Function TAGame.OnlineGame_TA.OnMainMenuOpened");
-
-	this->log("Bye!");
 };

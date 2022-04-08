@@ -28,15 +28,15 @@ void PowerToys::RenderSettings() {
 	if (ImGui::Checkbox("Enable plugin", &pluginenabled)) {
 		pluginenableCvar.setValue(pluginenabled);
 		if (pluginEnabled == true) {
-			this->log("Plugin enabled");
+			this->log("PowerToys plugin enabled");
 		}
 		else if (pluginEnabled == false) {
-			this->log("Plugin disabled");
+			this->log("PowerToys plugin disabled");
 		}
 	}
 	if (ImGui::IsItemHovered()) {
 		if (pluginEnabled == true) {
-			ImGui::SetTooltip("Disable this plugin (don't click it) :/");
+			ImGui::SetTooltip("Disable this plugin (don't click this) :/");
 		}
 		else if (pluginEnabled == false) {
 			ImGui::SetTooltip("Enable this so cool plugin!");
@@ -61,13 +61,13 @@ void PowerToys::RenderSettings() {
 
 		if (ImGui::Checkbox("Enable load freeplay after lose", &losefreeplayenabled)) {
 			losefreeplayenableCvar.setValue(losefreeplayenabled);
-			this->log("Allways load Freeplay after LOSE Toogled");
+			this->log("Allways load Freeplay after lose Toogled");
 		}
 		if (ImGui::IsItemHovered()) {
-			ImGui::SetTooltip("Toggle allways load Freeplay after LOSE");
+			ImGui::SetTooltip("Toggle allways load Freeplay after lose");
 		}
 
-		// Koniec
+		//
 
 		CVarWrapper winfreeplayenableCvar = cvarManager->getCvar("winallways_enabled");
 
@@ -79,13 +79,13 @@ void PowerToys::RenderSettings() {
 
 		if (ImGui::Checkbox("Enable load freeplay after win", &winfreeplayenabled)) {
 			winfreeplayenableCvar.setValue(winfreeplayenabled);
-			this->log("Allways load Freeplay after WIN Toogled");
+			this->log("Allways load Freeplay after win Toogled");
 		}
 		if (ImGui::IsItemHovered()) {
-			ImGui::SetTooltip("Toggle allways load Freeplay after WIN");
+			ImGui::SetTooltip("Toggle allways load Freeplay after win");
 		}
 
-		// Koniec
+		//
 
 		CVarWrapper queueenableCvar = cvarManager->getCvar("queue_enabled");
 
@@ -103,16 +103,15 @@ void PowerToys::RenderSettings() {
 			ImGui::SetTooltip("Toggle instant queue after game");
 		}
 
-		// Koniec Settingsow
+		// End settings
 
 
 
 		ImGui::NewLine();
-
-		ImGui::TextUnformatted("Mozesz przybindowac jakis przycisk do komendy \"freeplay_and_queue\".\nWtedy kiedy bedziesz np. w menu glownym mozesz kliknac ten przycisk,\na on cie przeniesie na freeplay i wlaczy kolejke do ostatnio granej gry.");
+								
+		ImGui::TextUnformatted("You can bind a button to the \"FAQ\" command (Freeplay_And_Queue).\nFor example, when you are in the main menu, you can binded button, \nand it will take you to freeplay and turn on the queue for the last played game.");
 
 		ImGui::NewLine();
-
 
 	}
 

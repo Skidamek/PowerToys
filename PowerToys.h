@@ -5,7 +5,7 @@
 #include "bakkesmod/plugin/PluginSettingsWindow.h"
 
 #include "version.h"
-constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH)/* "." stringify(VERSION_BUILD)*/;
+constexpr auto plugin_version = stringify(VERSION_MAJOR) "." stringify(VERSION_MINOR) "." stringify(VERSION_PATCH);
 
 class PowerToys : public BakkesMod::Plugin::BakkesModPlugin, public BakkesMod::Plugin::PluginSettingsWindow
 {
@@ -22,7 +22,7 @@ public:
     void StartGame(std::string name);
     void EndGame(std::string name);
     void Reset(std::string name);
-    void freeplay_and_queue();
+    void FAQ();
 
 private:
     void log(std::string msg);
