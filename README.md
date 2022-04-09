@@ -1,4 +1,4 @@
-### **Rocket League plugin to BakkesMod**
+Rocket League plugin to BakkesMod
 ========
 
 PowerToys - Currently, the main focus is on automatically enabling queue for the next game after finishing the previous one!
