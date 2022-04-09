@@ -3,6 +3,7 @@
 **Rocket League plugin to BakkesMod**
 
 Currently, the main focus is on automatically enabling queue for the next game after finishing the previous one!
+![image](https://user-images.githubusercontent.com/67871298/162564167-256b8498-2317-4d5e-9b88-07177f057d6d.png)
 
 **Installing**
 
