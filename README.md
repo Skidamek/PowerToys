@@ -1,3 +1,6 @@
+# Use [AutoLeave](https://bakkesplugins.com/plugins/view/386) it makes my idea come true in much better form than this...
+
+
 Rocket League plugin to BakkesMod
 ========
 
